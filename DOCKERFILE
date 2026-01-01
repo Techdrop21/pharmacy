@@ -13,13 +13,13 @@ RUN composer install --optimize-autoloader --no-interaction --no-scripts
 
 COPY . .
 
-# 👇 THIS FIXES YOUR ERROR
+# Create storage directories with proper permissions
 RUN mkdir -p storage/framework/{cache,sessions,views} \
     && mkdir -p bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
+    && chmod -R 777 storage bootstrap \
+    && php artisan cache:clear \
+    && php artisan config:cache
 
 EXPOSE 8000
-
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
