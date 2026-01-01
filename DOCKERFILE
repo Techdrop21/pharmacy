@@ -16,9 +16,7 @@ COPY . .
 # Create storage directories with proper permissions
 RUN mkdir -p storage/framework/{cache,sessions,views} \
     && mkdir -p bootstrap/cache \
-    && chmod -R 777 storage bootstrap \
-    && php artisan cache:clear \
-    && php artisan config:cache
+    && chmod -R 777 storage bootstrap
 
 EXPOSE 8000
 
