@@ -68,12 +68,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/qcod/app-settings"
-        }
-    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
