@@ -13,14 +13,10 @@ RUN composer install --optimize-autoloader --no-interaction --no-scripts
 
 COPY . .
 
+# Create storage directories with proper permissions
 RUN mkdir -p storage/framework/{cache,sessions,views} \
     && mkdir -p bootstrap/cache \
-    && chown -R www-data:www-data storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache
-
-RUN php artisan config:clear \
-    && php artisan cache:clear \
-    && php artisan route:clear
+    && chmod -R 777 storage bootstrap
 
 EXPOSE 8000
 
